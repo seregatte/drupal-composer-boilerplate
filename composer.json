@@ -1,5 +1,5 @@
 {
-  "name": "drupal-composer/drupal-project",
+  "name": "seregatte/drupal-composer-boilerplate",
   "description": "Composer template for Drupal projects",
   "repositories": [
   {
