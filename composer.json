@@ -30,7 +30,7 @@
   },
   "scripts": {
     "post-create-project-cmd": [
-      "rm README.md LICENSE .travis.yml"
+      "rm README.md LICENSE"
     ],
     "post-update-cmd": "sh resources/scripts/post-update-cmd.sh",
     "post-autoload-dump": "sh resources/scripts/post-autoload-dump.sh"
