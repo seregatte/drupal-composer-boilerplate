@@ -16,3 +16,10 @@ nbproject
 # Tools
 .svn
 .sass-cache
+
+# Drupal Composer Boilerplate
+.env
+Makefile
+composer.lock
+infrastructure/
+vendor/
