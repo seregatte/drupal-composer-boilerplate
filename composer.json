@@ -31,7 +31,9 @@
   "scripts": {
     "post-create-project-cmd": [
       "rm README.md LICENSE .travis.yml"
-    ]
+    ],
+    "post-update-cmd": "sh resources/scripts/post-update-cmd.sh",
+    "post-autoload-dump": "sh resources/scripts/post-autoload-dump.sh"
   },
   "config": {
     "vendor-dir": "vendor",

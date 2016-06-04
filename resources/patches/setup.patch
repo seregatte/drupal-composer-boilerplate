@@ -5,7 +5,7 @@
  	@export $$(cat .env | xargs) && cd infrastructure/environments/${ENVIRONMENT}/docker && docker-compose -f docker-compose.d$${DRUPAL_BOILERPLATE_DRUPAL_VERSION}.yml stop && docker-compose -f docker-compose.d$${DRUPAL_BOILERPLATE_DRUPAL_VERSION}.yml rm
 
 +server_webpack: requirements
-+	@export $$(cat .env | xargs) && cd public_html && docker run --rm -it -v `pwd`:/var/www/public_html -p 3000:3000 --net=docker_front --name=fronttools drupal-boilerplate/fronttools:7.0.2 bash -c 'cd public_html/profiles/saint_gobain_portal_agendamentos/modules/custom/saint_gobain_agendamentos/assets && npm start'
++	@export $$(cat .env | xargs) && cd public_html && docker run --rm -it -v `pwd`:/var/www/public_html -p 3000:3000 --net=docker_front --name=fronttools drupal-boilerplate/fronttools:7.0.2 bash -c 'cd public_html/sites/all/modules/react_example/assets && npm start'
 +
  reinstall_drupal: requirements
  	@export $$(cat .env | xargs) && chmod -Rf 777 public_html/sites/default/ && rm public_html/sites/default/settings.php && cp public_html/sites/default/default.settings.php public_html/sites/default/settings.php
