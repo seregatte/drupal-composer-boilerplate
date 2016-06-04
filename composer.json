@@ -1,0 +1,60 @@
+{
+  "name": "drupal-composer/drupal-project",
+  "description": "Composer template for Drupal projects",
+  "repositories": [
+  {
+    "type": "composer",
+    "url": "https://packagist.drupal-composer.org"
+  },
+  {
+    "type": "package",
+    "package": {
+      "name":"seregatte/drupal-docker-boilerplate",
+      "version": "7.0.2",
+      "type": "library",
+      "dist": {
+        "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip",
+        "type": "zip"
+      }
+    }
+  }
+  ],
+  "require": {
+    "composer/installers": "~1.0",
+    "derhasi/composer-preserve-paths": "0.1.*",
+    "seregatte/drupal-docker-boilerplate": "*",
+    "drupal/drupal": "7.*"
+  },
+  "conflict": {
+    "drupal/core": "8.*"
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "rm README.md LICENSE .travis.yml"
+    ]
+  },
+  "config": {
+    "vendor-dir": "vendor",
+    "secure-http": false
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "installer-paths": {
+      "public_html/": ["type:drupal-core"],
+      "public_html/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
+      "public_html/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
+      "public_html/sites/all/libraries/{$name}/": ["type:drupal-library"],
+      "public_html/sites/all/drush/{$name}/": ["type:drupal-drush"],
+      "public_html/profiles/{$name}/": ["type:drupal-profile"]
+    },
+    "preserve-paths": [
+      "public_html/sites/all/modules/contrib",
+      "public_html/sites/all/themes/contrib",
+      "public_html/sites/all/libraries",
+      "public_html/sites/all/drush",
+      "public_html/sites/default/settings.php",
+      "public_html/sites/default/files"
+    ]
+  }
+}
