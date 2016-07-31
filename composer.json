@@ -1,6 +1,8 @@
 {
   "name": "seregatte/drupal-composer-boilerplate",
+  "type": "project",
   "description": "Composer template for Drupal projects",
+  "license": "GPL-2.0+",
   "repositories": [
   {
     "type": "composer",
@@ -10,7 +12,7 @@
     "type": "package",
     "package": {
       "name":"seregatte/drupal-docker-boilerplate",
-      "version": "7.0.2",
+      "version": "8.0.2",
       "type": "library",
       "dist": {
         "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip",
@@ -20,23 +22,47 @@
   }
   ],
   "require": {
-    "composer/installers": "~1.0",
-    "derhasi/composer-preserve-paths": "0.1.*",
-    "seregatte/drupal-docker-boilerplate": "*",
-    "drupal/drupal": "7.*"
+    "composer/installers": "^1.0.20",
+    "drupal-composer/drupal-scaffold": "^2.0.1",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "~8.0",
+    "drush/drush": "~8.0",
+    "drupal/console": "~1.0"
   },
   "conflict": {
-    "drupal/core": "8.*"
+    "drupal/drupal": "*"
+  },
+  "require-dev": {
+    "behat/mink": "~1.7",
+    "behat/mink-goutte-driver": "~1.2",
+    "jcalderonzumba/gastonjs": "~1.0.2",
+    "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+    "mikey179/vfsStream": "~1.2",
+    "phpunit/phpunit": "~4.8",
+    "symfony/css-selector": "~2.8"
   },
   "scripts": {
     "post-create-project-cmd": [
       "rm README.md LICENSE",
-      "make set_variable DRUPAL_VERSION=7"
+      "make set_variable DRUPAL_VERSION=8"
+    ],
+    "pre-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "post-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
       "cp -Rf vendor/seregatte/drupal-docker-boilerplate/infrastructure .",
       "cp -Rf vendor/seregatte/drupal-docker-boilerplate/Makefile .",
       "patch -p0 < resources/patches/setup.patch"
+    ],
+    "drupal-scaffold": [
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
     ]
   },
   "config": {
@@ -45,22 +71,17 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "autoload": {
+    "classmap": ["scripts/composer/ScriptHandler.php"]
+  },
   "extra": {
     "installer-paths": {
-      "public_html/": ["type:drupal-core"],
-      "public_html/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
-      "public_html/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
-      "public_html/sites/all/libraries/{$name}/": ["type:drupal-library"],
-      "public_html/sites/all/drush/{$name}/": ["type:drupal-drush"],
-      "public_html/profiles/{$name}/": ["type:drupal-profile"]
-    },
-    "preserve-paths": [
-      "public_html/sites/all/modules/contrib",
-      "public_html/sites/all/themes/contrib",
-      "public_html/sites/all/libraries",
-      "public_html/sites/all/drush",
-      "public_html/sites/default/settings.php",
-      "public_html/sites/default/files"
-    ]
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/contrib/{$name}": ["type:drupal-drush"]
+    }
   }
 }
