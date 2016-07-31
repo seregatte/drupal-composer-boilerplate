@@ -30,10 +30,14 @@
   },
   "scripts": {
     "post-create-project-cmd": [
-      "rm README.md LICENSE"
+      "rm README.md LICENSE",
+      "make set_variable DRUPAL_VERSION=7"
     ],
-    "post-update-cmd": "sh resources/scripts/post-update-cmd.sh",
-    "post-autoload-dump": "sh resources/scripts/post-autoload-dump.sh"
+    "post-update-cmd": [
+      "cp -Rf vendor/seregatte/drupal-docker-boilerplate/infrastructure .",
+      "cp -Rf vendor/seregatte/drupal-docker-boilerplate/Makefile .",
+      "patch -p0 < resources/patches/setup.patch"
+    ]
   },
   "config": {
     "vendor-dir": "vendor",

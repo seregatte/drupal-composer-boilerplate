@@ -1,32 +1,43 @@
-# Composer template for Drupal projects
-
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=7.x)](https://travis-ci.org/drupal-composer/drupal-project)
+# Composer template for Drupal 7/8 projects
 
 This project template should provide a kickstart for managing your site 
-dependencies with [Composer](https://getcomposer.org/).
+dependencies with [Composer](https://getcomposer.org/) and infrastructure with [Docker](https://docker.com/) via [Drupal Docker Boilerplate](https://github.com/seregatte/drupal-docker-boilerplate).
 
-If you want to know, how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/master/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+## Requirements
+
+- make command 
+- Docker 1.11+ [->](https://docs.docker.com/engine/installation/)
+- Docker Composer 1.7+ [->](https://docs.docker.com/compose/install/)
+- PHP cli stack and composer (Optional) [->](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 
 ## Usage
 
-First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+You can create the project via composer or via composer inside a docker.
 
-> Note: The instructions below refer to the [global composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar) for your setup.
-
-After that you can create the project:
+If you have a php cli stack and composer, try this:
 
 ```
-composer create-project drupal-composer/drupal-project:7.x-dev some-dir --stability dev --no-interaction
+composer create-project seregatte/drupal-composer-boilerplate some-dir --stability dev --no-interaction
 ```
 
-With `composer require ...` you can download new dependencies to your installation.
+or if you prefer run via docker:
+
+```
+docker run --rm -v $(pwd):/app composer/composer create-project seregatte/drupal-composer-boilerplate some-dir --stability dev --no-interaction
+```
+
+With `composer require ...` or running the same command on docker, you can download new dependencies to your installation.
 
 ```
 cd some-dir
 composer require drupal/ctools:7.*
+```
+
+or
+
+```
+cd some-dir
+docker run --rm -v $(pwd):/app composer/composer require drupal/ctools:7.*
 ```
 
 ## What does the template do?
@@ -37,6 +48,8 @@ When installing the given `composer.json` some tasks are taken care of:
 * Modules (packages of type `drupal-module`) will be placed in `web/sites/all/modules/contrib/`
 * Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
+* Docker stack will be placed in `infrastructure/environment/development/docker`
+* Makefile will be placed in project's root folder
 
 ## Generate composer.json from existing project
 
