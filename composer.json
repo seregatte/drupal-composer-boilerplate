@@ -1,6 +1,8 @@
 {
   "name": "seregatte/drupal-composer-boilerplate",
+  "type": "project",
   "description": "Composer template for Drupal projects",
+  "license": "GPL-2.0+",
   "repositories": [
   {
     "type": "composer",
