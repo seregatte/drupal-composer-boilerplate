@@ -58,10 +58,11 @@
       "DrupalComposerBoilerplate\\composer\\ScriptHandler::createRequiredFiles",
       "cp -Rf vendor/seregatte/drupal-docker-boilerplate/infrastructure .",
       "cp -Rf vendor/seregatte/drupal-docker-boilerplate/Makefile .",
-      "patch -p0 < resources/patches/setup.patch"
+      "patch -p0 < resources/patches/setup.patch",
+      "patch -p0 < resources/patches/environment.patch"
     ],
     "drupal-scaffold": [
-      "DDrupalComposerBoilerplate\\DrupalScaffold\\Plugin::scaffold"
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
     ]
   },
   "config": {
@@ -71,7 +72,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "autoload": {
-    "classmap": ["resources/scripts/composer/ScriptHandler.php"]
+    "classmap": [
+      "resources/scripts/composer/ScriptHandler.php"
+    ]
   },
   "extra": {
     "installer-paths": {
