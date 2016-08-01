@@ -25,9 +25,8 @@
     "composer/installers": "^1.0.20",
     "drupal-composer/drupal-scaffold": "^2.0.1",
     "cweagans/composer-patches": "~1.0",
-    "drupal/core": "~8.0",
-    "drush/drush": "~8.0",
-    "drupal/console": "~1.0"
+    "seregatte/drupal-docker-boilerplate": "*",
+    "drupal/core": "~8.0"
   },
   "conflict": {
     "drupal/drupal": "*"
@@ -47,22 +46,22 @@
       "make set_variable DRUPAL_VERSION=8"
     ],
     "pre-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      "DrupalComposerBoilerplate\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "pre-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      "DrupalComposerBoilerplate\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+      "DrupalComposerBoilerplate\\composer\\ScriptHandler::createRequiredFiles"
     ],
     "post-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+      "DrupalComposerBoilerplate\\composer\\ScriptHandler::createRequiredFiles",
       "cp -Rf vendor/seregatte/drupal-docker-boilerplate/infrastructure .",
       "cp -Rf vendor/seregatte/drupal-docker-boilerplate/Makefile .",
       "patch -p0 < resources/patches/setup.patch"
     ],
     "drupal-scaffold": [
-      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+      "DDrupalComposerBoilerplate\\DrupalScaffold\\Plugin::scaffold"
     ]
   },
   "config": {
@@ -72,16 +71,15 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "autoload": {
-    "classmap": ["scripts/composer/ScriptHandler.php"]
+    "classmap": ["resources/scripts/composer/ScriptHandler.php"]
   },
   "extra": {
     "installer-paths": {
-      "web/core": ["type:drupal-core"],
-      "web/libraries/{$name}": ["type:drupal-library"],
-      "web/modules/contrib/{$name}": ["type:drupal-module"],
-      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-      "web/themes/contrib/{$name}": ["type:drupal-theme"],
-      "drush/contrib/{$name}": ["type:drupal-drush"]
+      "public_html/core": ["type:drupal-core"],
+      "public_html/libraries/{$name}": ["type:drupal-library"],
+      "public_html/modules/contrib/{$name}": ["type:drupal-module"],
+      "public_html/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "public_html/themes/contrib/{$name}": ["type:drupal-theme"]
     }
   }
 }
