@@ -1,11 +1,10 @@
-# Composer template for Drupal 7/8 projects
+# Composer template for Drupal 8 projects with docksal
 
 This project template should provide a kickstart for managing your site 
-dependencies with [Composer](https://getcomposer.org/) and infrastructure with [Docker](https://docker.com/) via [Drupal Docker Boilerplate](https://github.com/seregatte/drupal-docker-boilerplate).
+dependencies with [Composer](https://getcomposer.org/) and infrastructure with [Docker](https://docker.com/) via [Docksal](docksal.readthedocs.io).
 
 ## Requirements
 
-- make command 
 - Docker 1.11+ [->](https://docs.docker.com/engine/installation/)
 - Docker Composer 1.7+ [->](https://docs.docker.com/compose/install/)
 - PHP cli stack and composer (Optional) [->](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
@@ -30,14 +29,14 @@ With `composer require ...` or running the same command on docker, you can downl
 
 ```
 cd some-dir
-composer require drupal/ctools:7.*
+composer require drupal/ctools:8.*
 ```
 
 or
 
 ```
 cd some-dir
-docker run --rm -v $(pwd):/app composer/composer require drupal/ctools:7.*
+docker run --rm -v $(pwd):/app composer/composer require drupal/ctools:8.*
 ```
 
 ## What does the template do?
@@ -50,12 +49,6 @@ When installing the given `composer.json` some tasks are taken care of:
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
 * Docker stack will be placed in `infrastructure/environment/development/docker`
 * Makefile will be placed in project's root folder
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
 
 
 ## FAQ
