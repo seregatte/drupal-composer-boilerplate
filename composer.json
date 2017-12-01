@@ -71,7 +71,8 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "cp -Rf vendor/seregatte/drupal-docker-boilerplate/.docksal ."
         ]
     },
     "extra": {
