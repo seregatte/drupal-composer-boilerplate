@@ -13,6 +13,18 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+          "type": "package",
+          "package": {
+            "name":"seregatte/drupal-docker-boilerplate",
+            "version": "8.0.3",
+            "type": "docksal-env",
+            "dist": {
+              "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip",
+              "type": "zip"
+            }
+          }
         }
     ],
     "require": {
@@ -21,7 +33,7 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.4",
-        "drush/drush": "~8.0|^9.0.0-beta8",
+        "seregatte/drupal-docker-boilerplate": "0.0.3",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
@@ -59,7 +71,8 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "cp -Rf vendor/seregatte/drupal-docker-boilerplate/.docksal ."
         ]
     },
     "extra": {
