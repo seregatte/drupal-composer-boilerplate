@@ -18,7 +18,7 @@
           "type": "package",
           "package": {
             "name":"seregatte/drupal-docker-boilerplate",
-            "version": "8.0.3",
+            "version": "8.0.4",
             "type": "docksal-env",
             "dist": {
               "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip",
