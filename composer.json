@@ -20,7 +20,7 @@
             "name":"seregatte/drupal-docker-boilerplate",
             "version": "8.0.5",
             "type": "docksal-env",
-            "dist": {
+            "source": {
               "url": "https://github.com/seregatte/drupal-docker-boilerplate.git",
               "type": "git"
             }
