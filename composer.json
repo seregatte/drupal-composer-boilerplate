@@ -18,10 +18,10 @@
           "type": "package",
           "package": {
             "name":"seregatte/drupal-docker-boilerplate",
-            "version": "8.0.5",
+            "version": "8.0.6",
             "type": "docksal-env",
             "dist": {
-              "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip?v=8.0.5",
+              "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip?v=8.0.6",
               "type": "zip"
             }
           }
@@ -33,7 +33,7 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.4",
-        "seregatte/drupal-docker-boilerplate": "8.0.5",
+        "seregatte/drupal-docker-boilerplate": "8.0.6",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
