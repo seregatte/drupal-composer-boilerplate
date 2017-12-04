@@ -21,7 +21,7 @@
             "version": "8.0.5",
             "type": "docksal-env",
             "dist": {
-              "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip",
+              "url": "https://github.com/seregatte/drupal-docker-boilerplate/archive/master.zip?v=8.0.5",
               "type": "zip"
             }
           }
