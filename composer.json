@@ -22,7 +22,7 @@
             "type": "docksal-env",
             "dist": {
               "url": "https://github.com/seregatte/drupal-docker-boilerplate.git",
-              "type": "vcs"
+              "type": "git"
             }
           }
         }
